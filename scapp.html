@@ -6,7 +6,7 @@
 <head>
 <title>sciter promise demo</title>
 <script src="js/logger.js" />
-<script>
+<script type="module">
 
 async function wait_async_await()
 {
@@ -63,6 +63,11 @@ document.on("ready", function() {
     wait_then();
 
     console.log("Call wait - OK");
+
+    // immediately invoked async function
+    (async function() {
+        await Promise.resolve(console.log("immediately invoked async function"));
+    }());
 });
 
 </script>
