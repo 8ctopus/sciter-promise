@@ -1,4 +1,4 @@
-# sciter asnychronous code demo
+# sciter promise demo
 
 Javascript asynchronous code uses [`Promises`](https://javascript.info/promise-basics).
 
