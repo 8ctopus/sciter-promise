@@ -1,0 +1,73 @@
+<html
+    window-resizable="true"
+    window-width="800dip"
+    window-height="600dip"
+>
+<head>
+<title>sciter promise demo</title>
+<script src="js/logger.js" />
+<script>
+
+async function wait_async_await()
+{
+    const promise = new Promise(function(success, error) {
+        setTimeout(function() {
+            if (1 === 1)
+                success("success");
+            else
+                error("failed");
+        }, 2000);
+    });
+
+    console.log("Wait for promise...");
+
+    try {
+        const result = await promise;
+        console.log(`Wait for promise - OK - ${result}`);
+    }
+    catch (error) {
+        console.log(`Wait for promise - CATCH - ${error}`);
+    }
+}
+
+function wait_then()
+{
+    const promise = new Promise(function(success, error) {
+        setTimeout(function() {
+            if (1 === 1)
+                success("success");
+            else
+                error("failed");
+        }, 2000);
+    });
+
+    console.log("Wait for promise...");
+
+    promise.then(
+        function success(result) {
+            console.log(`Wait for promise - OK - ${result}`);
+        },
+        function error(result) {
+            console.log(`Wait for promise - OK - ${result}`);
+        }
+    );
+}
+
+document.on("ready", function() {
+    console.log("Call wait...");
+
+    // option 1
+    wait_async_await();
+
+    // option 2
+    wait_then();
+
+    console.log("Call wait - OK");
+});
+
+</script>
+</head>
+<body>
+<plaintext #logger />
+</body>
+</html>
