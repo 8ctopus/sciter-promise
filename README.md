@@ -62,23 +62,23 @@ console.log("Call wait - OK");
 ### then
 
 ```js
-    const promise = new Promise(function(success, error) {
-        setTimeout(function() {
-            if (1 === 0)
-                success("success");
-            else
-                error("failed");
-        }, 2000);
-    });
+const promise = new Promise(function(success, error) {
+    setTimeout(function() {
+        if (1 === 0)
+            success("success");
+        else
+            error("failed");
+    }, 2000);
+});
 
-    console.log("Wait for promise...");
+console.log("Wait for promise...");
 
-    promise.then(
-        function success(result) {
-            console.log(`Wait for promise - OK - return - ${result}`);
-        },
-        function error(result) {
-            console.log(`Wait for promise - OK - return - ${result}`);
-        }
-    );
+promise.then(
+    function success(result) {
+        console.log(`Wait for promise - OK - return - ${result}`);
+    },
+    function error(result) {
+        console.log(`Wait for promise - OK - return - ${result}`);
+    }
+);
 ```
