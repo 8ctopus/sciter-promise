@@ -1,5 +1,14 @@
 # sciter promise demo
 
+## get started
+
+- git clone the repository
+- run `install.bat` to download the latest sciter binaries and library
+- run `scapp.bat`
+- to refresh the app after changes to the html/css click `F5`
+
+## promises
+
 Javascript asynchronous code uses [`Promises`](https://javascript.info/promise-basics).
 
 ```js
