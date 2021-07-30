@@ -63,7 +63,8 @@ document.on("ready", function() {
         });
 
 
-    // wait async example
+    // 2
+    // wait example
     console.log("Call wait...");
 
     // option 1
@@ -74,6 +75,8 @@ document.on("ready", function() {
 
     console.log("Call wait - OK");
 
+
+    // 3
     // immediately invoked async function
     (async function() {
         await Promise.resolve(console.log("immediately invoked async function"));

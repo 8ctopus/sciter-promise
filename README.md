@@ -33,17 +33,20 @@ const promise = new Promise(function(success, error) {
 
 ## wait for promise completion
 
-There are 2 ways to wait for the promise to complete.
+There are 2 ways to wait for the promise to complete
 
 ### await
 
 [https://javascript.info/async-await](https://javascript.info/async-await)
 
-`await` must be used inside an `async` function. `async` functions are run asynchronously as the name implies which in this example means that `Call wait - OK` happens before `wait_async_await` completes.
+`await` must be used inside an `async` function.
+
+`async` functions are run asynchronously which means that `Call wait - OK` happens before function `wait_async_await()` completes.
 
 ```js
 async function wait_async_await()
 {
+    // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
             if (1 === 1)
@@ -53,10 +56,12 @@ async function wait_async_await()
         }, 2000);
     });
 
-    console.log("Wait for promise...");
-
     try {
+        console.log("Wait for promise...");
+
+        // code waits for the promise to complete
         const result = await promise;
+
         console.log(`Wait for promise - OK - ${result}`);
     }
     catch (error) {
@@ -64,14 +69,15 @@ async function wait_async_await()
     }
 }
 
-console.log("Call wait...");
+console.log("Call async wait...");
 wait_async_await();
-console.log("Call wait - OK");
+console.log("Call async wait - OK");
 ```
 
 ### then
 
 ```js
+// create promise
 const promise = new Promise(function(success, error) {
     setTimeout(function() {
         if (1 === 0)
@@ -84,11 +90,12 @@ const promise = new Promise(function(success, error) {
 console.log("Wait for promise...");
 
 promise.then(
+    // promise completed
     function success(result) {
-        console.log(`Wait for promise - OK - return - ${result}`);
+        console.log(`Wait for promise - OK - ${result}`);
     },
     function error(result) {
-        console.log(`Wait for promise - OK - return - ${result}`);
+        console.log(`Wait for promise - FAILED - ${result}`);
     }
 );
 ```

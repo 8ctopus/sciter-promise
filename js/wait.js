@@ -1,5 +1,6 @@
 export async function wait_async_await()
 {
+    // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
             if (1 === 1)
@@ -9,10 +10,12 @@ export async function wait_async_await()
         }, 2000);
     });
 
-    console.log("Wait for promise...");
-
     try {
+        console.log("Wait for promise...");
+
+        // code waits for the promise to complete
         const result = await promise;
+
         console.log(`Wait for promise - OK - ${result}`);
     }
     catch (error) {
@@ -22,6 +25,7 @@ export async function wait_async_await()
 
 export function wait_then()
 {
+    // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
             if (1 === 1)
@@ -34,11 +38,12 @@ export function wait_then()
     console.log("Wait for promise...");
 
     promise.then(
+        // promise completed
         function success(result) {
             console.log(`Wait for promise - OK - ${result}`);
         },
         function error(result) {
-            console.log(`Wait for promise - OK - ${result}`);
+            console.log(`Wait for promise - FAILED - ${result}`);
         }
     );
 }
