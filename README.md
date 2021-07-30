@@ -35,11 +35,13 @@ const promise = new Promise(function(success, error) {
 
 There are 2 ways to wait for the promise to complete
 
-### await
+### async / await
 
 [https://javascript.info/async-await](https://javascript.info/async-await)
 
-`await` must be used inside an `async` function.
+The `async` keyword placed before a function means that function always returns a promise.
+
+`await` will be used inside an `async` function to wait for the promise to complete.
 
 `async` functions are run asynchronously which means that `Call wait - OK` happens before function `wait_async_await()` completes.
 
@@ -70,8 +72,9 @@ async function wait_async_await()
 }
 
 console.log("Call async wait...");
-wait_async_await();
+const result = wait_async_await();
 console.log("Call async wait - OK");
+console.debug(result);
 ```
 
 ### then
@@ -90,7 +93,7 @@ const promise = new Promise(function(success, error) {
 console.log("Wait for promise...");
 
 promise.then(
-    // promise completed
+    // promise has completed
     function success(result) {
         console.log(`Wait for promise - OK - ${result}`);
     },

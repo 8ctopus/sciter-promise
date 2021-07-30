@@ -68,7 +68,8 @@ document.on("ready", function() {
     console.log("Call wait...");
 
     // option 1
-    wait_async_await();
+    const result = wait_async_await();
+    console.debug(`wait_async_await - ${result}`);
 
     // option 2
     wait_then();
