@@ -38,7 +38,7 @@ export function wait_then()
     console.log("Wait for promise...");
 
     promise.then(
-        // promise completed
+        // promise has completed
         function success(result) {
             console.log(`Wait for promise - OK - ${result}`);
         },
