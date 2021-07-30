@@ -16,7 +16,8 @@ import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import {addReloadWindow, centerWindow} from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 import {wait_async_await, wait_then} from "js/wait.js";
-import {file} from "js/file.js";
+import * as file1 from "js/file.js";
+//import {file} as file2 from "js/file2.js";
 
 document.on("ready", function() {
     // initialize logger
@@ -46,11 +47,11 @@ document.on("ready", function() {
 
     // file async example
     // open file asynchronously
-    file.open(URL.toPath(__DIR__ + "test.txt"));
+    file1.file.open(URL.toPath(__DIR__ + "test.txt"));
 
     // write fails because file is not yet open
-    file.write("test");
-    file.close();
+    file1.file.write("test");
+    file1.file.close();
 
     // wait async example
     console.log("Call wait...");
