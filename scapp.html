@@ -16,6 +16,7 @@ import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import {addReloadWindow, centerWindow} from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 import {wait_async_await, wait_then} from "js/wait.js";
+import {file} from "js/file";
 
 document.on("ready", function() {
     // initialize logger
@@ -43,6 +44,13 @@ document.on("ready", function() {
     // center window on screen
     centerWindow();
 
+    // file async example
+    file.open(URL.toPath(__DIR__ + "test.txt"));
+    file.write("test");
+    file.write("test");
+    file.close();
+
+    // wait async example
     console.log("Call wait...");
 
     // option 1
