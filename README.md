@@ -39,7 +39,7 @@ There are 2 ways to wait for the promise to complete
 
 [https://javascript.info/async-await](https://javascript.info/async-await)
 
-The `async` keyword placed before a function means that function always returns a promise.
+The `async` keyword placed before a function means that function always returns a `Promise`. Non promise return will be wrapped within a `Promise`.
 
 `await` will be used inside an `async` function to wait for the promise to complete.
 
