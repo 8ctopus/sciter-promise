@@ -55,11 +55,13 @@ document.on("ready", function() {
 
     // file async example
     // open file asynchronously
-    file2.file.open(URL.toPath(__DIR__ + "test2.txt"));
+    file2.file.open(URL.toPath(__DIR__ + "test2.txt"))
+        .then(() => {
+            // write fails because file is not yet open
+            file2.file.write("test");
+            file2.file.close();
+        });
 
-    // write fails because file is not yet open
-    file2.file.write("test");
-    file2.file.close();
 
     // wait async example
     console.log("Call wait...");

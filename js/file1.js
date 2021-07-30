@@ -1,4 +1,5 @@
 import * as sys from "@sys";
+import {encode,decode} from "@sciter";
 
 export class file
 {
@@ -18,6 +19,7 @@ export class file
                 .then(
                     (handle) => {
                         this.#handle = handle;
+                        console.debug("Open file - OK");
                     },
                     (error) => {
                         console.error(`Open file - FAILED - ${error}`);
@@ -37,9 +39,11 @@ export class file
             if (this.#handle) {
                 this.#handle.close();
                 this.#handle = null;
+
+                console.debug(`Close file - OK`);
             }
             else
-            console.error(`Close file - FAILED - file not open`);
+                console.error(`Close file - FAILED - file not open`);
         }
         catch (e) {
             console.error(`Close file - FAILED - ${e.toString()}`);
@@ -51,6 +55,18 @@ export class file
         if (this.#handle === null) {
             console.error(`Write to file - FAILED - file not open`);
             return;
+        }
+
+        try {
+            // write message to file
+            const buffer = encode(message + "\r\n", "utf-8");
+            this.#handle.write(buffer);
+
+            console.debug("Write to file - OK");
+        }
+        catch (e) {
+            // send message to original console method
+            console.error(`Write to file - FAILED - ${e.toString()}`);
         }
     }
 }
