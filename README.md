@@ -61,7 +61,7 @@ async function wait_async_await()
     try {
         console.log("Wait for promise...");
 
-        // code waits for the promise to complete
+        // code pauses and waits for the promise to complete
         const result = await promise;
 
         console.log(`Wait for promise - OK - ${result}`);
@@ -78,6 +78,8 @@ console.debug(result);
 ```
 
 ### then
+
+[https://javascript.info/promise-basics#then](https://javascript.info/promise-basics#then)
 
 ```js
 // create promise
