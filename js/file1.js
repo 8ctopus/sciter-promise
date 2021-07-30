@@ -31,7 +31,8 @@ export class file
     }
 
     /**
-     *
+     * Close file
+     * @return void
      */
     static close()
     {
@@ -50,11 +51,16 @@ export class file
         }
     }
 
+    /**
+     * Write message to file
+     * @param string message
+     * @return bool
+     */
     static write(message)
     {
         if (this.#handle === null) {
             console.error(`Write to file - FAILED - file not open`);
-            return;
+            return false;
         }
 
         try {
@@ -63,6 +69,7 @@ export class file
             this.#handle.write(buffer);
 
             console.debug("Write to file - OK");
+            return true;
         }
         catch (e) {
             // send message to original console method
