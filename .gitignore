@@ -1,11 +1,5 @@
-/inspector.exe
-/scapp.exe
-/sciter.dll
-/spm.phar
-/spm
-
-/*.sublime-workspace
-
+/bin/
 /vendor/
 
-/test*.txt
+/*.sublime-workspace
+/*.log
