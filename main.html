@@ -51,17 +51,20 @@ document.ready = function() {
     // open file asynchronously
     file1.file.open(URL.toPath(__DIR__ + "test1.txt"));
 
-    // write fails because file is not yet open
+    console.warn("write fails because file is not yet open (async execution did not take place)");
     file1.file.write("test");
+
+    console.warn("close fails because file is not yet open (async execution did not take place)");
     file1.file.close();
 
     // file async example
     // open file asynchronously
     file2.file.open(URL.toPath(__DIR__ + "test2.txt"))
         .then(() => {
-            // write fails because file is not yet open
             file2.file.write("test");
+            console.note("write success")
             file2.file.close();
+            console.note("close success")
         });
 
 
