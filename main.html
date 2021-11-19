@@ -13,37 +13,39 @@
 <script type="module">
 
 import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
-import {addReloadWindow, centerWindow} from "vendor/8ctopus/sciter-utils/src/utils.js";
+import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 import {wait_async_await, wait_then} from "js/wait.js";
 import * as file1 from "js/file1.js";
 import * as file2 from "js/file2.js";
 
-document.on("ready", function() {
-    // initialize logger
-    logger.init("", false);
+// initialize logger
+logger.init();
 
+// attach logger to console
+logger.attach();
+
+// capture unhandled exceptions
+logger.capture(unhandledExceptionHandler);
+
+document.ready = function() {
     // subscribe to logger messages
-    logger.subscribe(function(level, message) {
-        const log = document.$("plaintext#logger");
+    logger.plaintext(document.$("plaintext#logger"));
 
-        log.append(JSX(level, {}, [message]));
-
-        // scroll to last item
-        log.lastElementChild.scrollIntoView({behavior: "smooth"});
-    });
-
-    // attach logger to console
-    logger.attach();
-
-    // capture unhandled exceptions
-    logger.capture();
+    // log sciter version
+    console.debug(utils.sciterInfo());
 
     // add support for F5 reload
-    addReloadWindow();
+    utils.addReloadWindow();
+
+    // close window on escape key press
+    utils.closeWindowOnEscape(Window.this);
 
     // center window on screen
-    centerWindow();
+    utils.centerWindow(Window.this, "screen");
+
+    // bring window to front and set input focus
+    Window.this.activate(true);
 
     // file async example
     // open file asynchronously
@@ -82,7 +84,18 @@ document.on("ready", function() {
     (async function() {
         await Promise.resolve(console.log("immediately invoked async function"));
     }());
-});
+}
+
+/**
+ * Unhandled exception handler
+ * @param  Error|String e
+ * @return void
+ */
+function unhandledExceptionHandler(e)
+{
+    // log exception using exception if it exists, error otherwise
+    typeof console.exception === "function" ? console.exception(e) : console.error(e);
+}
 
 </script>
 </head>
