@@ -28,7 +28,7 @@ logger.attach();
 // capture unhandled exceptions
 logger.capture(unhandledExceptionHandler);
 
-document.ready = function() {
+document.on("ready", function() {
     // subscribe to logger messages
     logger.plaintext(document.$("plaintext#logger"));
 
@@ -87,7 +87,7 @@ document.ready = function() {
     (async function() {
         await Promise.resolve(console.log("immediately invoked async function"));
     }());
-}
+});
 
 /**
  * Unhandled exception handler
