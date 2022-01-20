@@ -1,17 +1,15 @@
 import * as sys from "@sys";
-import {encode,decode} from "@sciter";
+import {encode, decode} from "@sciter";
 
-export class file
-{
+export class file {
     static #handle = null;
 
     /**
      * Open file
      * @param path - file path
-     * @return promise
+     * @returns promise
      */
-    static async open(path)
-    {
+    static async open(path) {
         try {
             console.debug("Open file...");
 
@@ -25,41 +23,40 @@ export class file
                         console.error(`Open file - FAILED - ${error}`);
                     });
         }
-        catch (e) {
-            console.error(`Open file - FAILED - ${e.toString()}`);
+        catch (error) {
+            console.error(`Open file - FAILED - ${error.toString()}`);
         }
     }
 
     /**
      * Close file
-     * @return void
+     * @returns void
      */
-    static close()
-    {
+    static close() {
         try {
             if (this.#handle) {
                 this.#handle.close();
                 this.#handle = null;
 
-                console.debug(`Close file - OK`);
+                console.debug("Close file - OK");
             }
             else
-                console.error(`Close file - FAILED - file not open`);
+                console.error("Close file - FAILED - file not open");
         }
-        catch (e) {
-            console.error(`Close file - FAILED - ${e.toString()}`);
+        catch (error) {
+            console.error(`Close file - FAILED - ${error.toString()}`);
         }
     }
 
     /**
      * Write message to file
-     * @param string message
-     * @return bool
+     * @param string - message
+     * @param message
+     * @returns bool
      */
-    static write(message)
-    {
+    static write(message) {
         if (this.#handle === null) {
-            console.error(`Write to file - FAILED - file not open`);
+            console.error("Write to file - FAILED - file not open");
             return false;
         }
 
@@ -71,9 +68,9 @@ export class file
             console.debug("Write to file - OK");
             return true;
         }
-        catch (e) {
+        catch (error) {
             // send message to original console method
-            console.error(`Write to file - FAILED - ${e.toString()}`);
+            console.error(`Write to file - FAILED - ${error.toString()}`);
         }
     }
 }

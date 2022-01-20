@@ -1,5 +1,4 @@
-export async function wait_async_await()
-{
+export async function wait_async_await() {
     // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
@@ -23,8 +22,7 @@ export async function wait_async_await()
     }
 }
 
-export function wait_then()
-{
+export function wait_then() {
     // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
@@ -42,9 +40,9 @@ export function wait_then()
         function success(result) {
             console.log(`Wait for promise - OK - ${result}`);
         },
-        function error(result) {
-            console.log(`Wait for promise - FAILED - ${result}`);
-        }
+        function error(error_) {
+            console.log(`Wait for promise - FAILED - ${error_}`);
+        },
     );
 }
 

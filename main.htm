@@ -62,9 +62,9 @@ document.on("ready", function() {
     file2.file.open(URL.toPath(__DIR__ + "test2.txt"))
         .then(() => {
             file2.file.write("test");
-            console.note("write success")
+            console.note("write success");
             file2.file.close();
-            console.note("close success")
+            console.note("close success");
         });
 
 
@@ -88,17 +88,6 @@ document.on("ready", function() {
         await Promise.resolve(console.log("immediately invoked async function"));
     }());
 });
-
-/**
- * Unhandled exception handler
- * @param  Error|String e
- * @return void
- */
-function unhandledExceptionHandler(e)
-{
-    // log exception using exception if it exists, error otherwise
-    typeof console.exception === "function" ? console.exception(e) : console.error(e);
-}
 
 </script>
 </head>
