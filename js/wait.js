@@ -1,4 +1,4 @@
-export async function wait_async_await() {
+export async function waitAsyncAwait() {
     // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
@@ -22,10 +22,10 @@ export async function wait_async_await() {
     }
 }
 
-export function wait_then() {
+export function waitThen() {
     // create promise
     const promise = new Promise(function(success, error) {
-        setTimeout(function() {
+        setTimeout(() => {
             if (1 === 1)
                 success("success");
             else
@@ -37,10 +37,10 @@ export function wait_then() {
 
     promise.then(
         // promise has completed
-        function success(result) {
+        function (result) {
             console.log(`Wait for promise - OK - ${result}`);
         },
-        function error(error_) {
+        function (error_) {
             console.log(`Wait for promise - FAILED - ${error_}`);
         },
     );

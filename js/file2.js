@@ -1,13 +1,13 @@
 import * as sys from "@sys";
-import {encode, decode} from "@sciter";
+import {encode} from "@sciter";
 
 export class file {
-    static #handle = null;
+    static #handle = undefined;
 
     /**
      * Open file
-     * @param path - file path
-     * @returns promise
+     * @param {string} path - file path
+     * @returns {Promise}
      */
     static async open(path) {
         try {
@@ -15,11 +15,11 @@ export class file {
 
             await sys.fs.open(path, "w", 0o666)
                 .then(
-                    (handle) => {
+                    handle => {
                         this.#handle = handle;
                         console.debug("Open file - OK");
                     },
-                    (error) => {
+                    error => {
                         console.error(`Open file - FAILED - ${error}`);
                     });
         }
@@ -30,13 +30,12 @@ export class file {
 
     /**
      * Close file
-     * @returns void
      */
     static close() {
         try {
             if (this.#handle) {
                 this.#handle.close();
-                this.#handle = null;
+                this.#handle = undefined;
 
                 console.debug("Close file - OK");
             }
@@ -50,12 +49,11 @@ export class file {
 
     /**
      * Write message to file
-     * @param string - message
-     * @param message
-     * @returns bool
+     * @param {string} message
+     * @returns {boolean}
      */
     static write(message) {
-        if (this.#handle === null) {
+        if (this.#handle === undefined) {
             console.error("Write to file - FAILED - file not open");
             return false;
         }

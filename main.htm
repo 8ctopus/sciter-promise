@@ -15,7 +15,7 @@
 import Logger from "node_modules/sciter-logger/src/logger.js";
 import * as Utils from "node_modules/sciter-utils/src/utils.js";
 
-import {wait_async_await, wait_then} from "js/wait.js";
+import {waitAsyncAwait, waitThen} from "js/wait.js";
 import * as file1 from "js/file1.js";
 import * as file2 from "js/file2.js";
 
@@ -67,26 +67,24 @@ document.on("ready", function() {
             console.note("close success");
         });
 
-
     // 2
     // wait example
     console.log("Call wait...");
 
     // option 1
-    const result = wait_async_await();
-    console.debug(`wait_async_await - ${result}`);
+    const result = waitAsyncAwait();
+    console.debug(`waitAsyncAwait - ${result}`);
 
     // option 2
-    wait_then();
+    waitThen();
 
     console.log("Call wait - OK");
-
 
     // 3
     // immediately invoked async function
     (async function() {
         await Promise.resolve(console.log("immediately invoked async function"));
-    }());
+    })();
 });
 
 </script>
