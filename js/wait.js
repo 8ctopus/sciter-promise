@@ -16,8 +16,7 @@ export async function waitAsyncAwait() {
         const result = await promise;
 
         console.log(`Wait for promise - OK - ${result}`);
-    }
-    catch (error) {
+    } catch (error) {
         console.log(`Wait for promise - CATCH - ${error}`);
     }
 }

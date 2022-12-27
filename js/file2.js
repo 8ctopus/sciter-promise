@@ -22,8 +22,7 @@ export class file {
                     error => {
                         console.error(`Open file - FAILED - ${error}`);
                     });
-        }
-        catch (error) {
+        } catch (error) {
             console.error(`Open file - FAILED - ${error.toString()}`);
         }
     }
@@ -38,11 +37,9 @@ export class file {
                 this.#handle = undefined;
 
                 console.debug("Close file - OK");
-            }
-            else
+            } else
                 console.error("Close file - FAILED - file not open");
-        }
-        catch (error) {
+        } catch (error) {
             console.error(`Close file - FAILED - ${error.toString()}`);
         }
     }
@@ -65,10 +62,10 @@ export class file {
 
             console.debug("Write to file - OK");
             return true;
-        }
-        catch (error) {
+        } catch (error) {
             // send message to original console method
             console.error(`Write to file - FAILED - ${error.toString()}`);
+            return false;
         }
     }
 }
