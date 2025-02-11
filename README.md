@@ -1,6 +1,6 @@
 # sciter promise demo
 
-This is a [sciter.js](https://sciter.com/) project that experiments with Promise.
+This is a [sciter.js](https://sciter.com/) project that experiments with `Promise`.
 
 ## demo
 
@@ -11,13 +11,13 @@ This is a [sciter.js](https://sciter.com/) project that experiments with Promise
 
 ## demo requirements
 
-- A recent version of Node.js `node` (tested with 16 LTS) and its package manager `npm`.
+- A recent version of Node.js `node` (tested with 22 LTS) and its package manager `npm`.
     - On Windows [download](https://nodejs.dev/download/) and run the installer
     - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa)
 
 ## promises
 
-Javascript asynchronous code uses [`Promises`](https://javascript.info/promise-basics).
+Javascript asynchronous code uses [`Promise`](https://javascript.info/promise-basics).
 
 ```js
 let promise = new Promise(function(success, error) {
@@ -25,7 +25,7 @@ let promise = new Promise(function(success, error) {
 });
 ```
 
-The function inside the promise constructor has 2 callback arguments: the first for success and the second for error.
+The function inside the promise constructor takes 2 callbacks as arguments: the first for success and the second for error.
 
 ```js
 const promise = new Promise(function(success, error) {
@@ -53,8 +53,7 @@ The `async` keyword placed before a function means that function always returns 
 `async` functions are run asynchronously which means that `Call wait - OK` happens before function `wait_async_await()` completes.
 
 ```js
-async function wait_async_await()
-{
+async function wait_async_await() {
     // create promise
     const promise = new Promise(function(success, error) {
         setTimeout(function() {
