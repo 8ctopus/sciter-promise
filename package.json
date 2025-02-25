@@ -1,6 +1,6 @@
 {
   "name": "sciter-promise",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a [sciter.js](https://sciter.com/) project that experiments with Promise.",
   "scripts": {
     "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs cleanup",
